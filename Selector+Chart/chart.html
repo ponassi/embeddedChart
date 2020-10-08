@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<style>
+
+.observablehq { margin: 0; }
+.observablehq > :only-child { display: block; }
+
+</style>
+<body>
+<p id="selector"></p>
+
+<div id="chart"></div>
+
+<script type="module">
+
+    import define from "./index.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+
+    new Runtime().module(define, name => {
+        if (name === "viewof colors") {
+            return new Inspector(document.querySelector("#selector"));
+        }
+        if (name === "chart") {
+            return new Inspector(document.querySelector("#chart"));
+        }
+    });   
+</script>
+</body>
