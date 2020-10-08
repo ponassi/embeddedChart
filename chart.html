@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<style>
+
+.observablehq { margin: 0; }
+.observablehq > :only-child { display: block; }
+
+</style>
+<body>
+<script type="module">
+
+    import define from "./index.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+
+    new Runtime().module(define, name => {
+    if (name === "chart") {
+        return new Inspector(document.body);
+    }
+    });
+    
+    </script>
